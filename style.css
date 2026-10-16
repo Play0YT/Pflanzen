@@ -1,0 +1,139 @@
+.card-text {
+    background-color: rgb(156, 231, 156);
+    margin-left: 1em;
+    transition: all .3s;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(500px, 0.9fr));
+    gap: 0.2em; 
+}
+
+.card::before {
+    content: '';
+    position: absolute; top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--neon), var(--neon3));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .3s;
+}
+
+.card:hover {
+    transform: translateY(-4px); border-color: rgba(167,139,250,0.5);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+}
+
+.card:hover::before {
+    transform: scaleX(1);
+}
+
+.card-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.card-desc {
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+}
+
+.card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+}
+
+.tag {
+    font-size: 0.75rem;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: rgba(167,139,250,0.15);
+    border: 1px solid rgba(109, 65, 241, 0.486);
+}
+
+.tag.wet {
+    background: rgba(17, 114, 224, 0.534);
+    border-color: rgba(0, 17, 255, 0.432);
+}
+
+.tag.fine {
+    background: rgba(31, 255, 42, 0.534);
+    border-color: rgba(36, 196, 70, 0.432);
+}
+
+.tag.dry {
+    background: rgba(197, 138, 10, 0.534);
+    border-color: rgba(245, 199, 73, 0.432);
+}
+
+.card-link {
+    color: var(--neon); text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: gap .2s;
+}
+
+.card-link:hover {
+    gap: 8px;
+}
+
+body{
+    background-color: rgb(96, 139, 80);
+}
+
+.sticky-header {
+  position: sticky;
+  top: 0;
+  background-color: #94cc6e;
+  color: rgb(44, 63, 45);
+  padding: 15px;
+  z-index: 1000;
+  margin-bottom: 2em;
+}
+
+.center{
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.card {
+    background-color: rgb(156, 231, 156);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 1.75rem;
+    margin: 0.5em;
+    transition: all .3s;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: grid;
+}
+
+.water-btn {
+    border: rgba(0, 102, 255, 0.849);
+    background-color: rgba(60, 140, 220, 0.63);
+}
+
+.water-btn:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
