@@ -12,7 +12,7 @@
 
 .cards-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(500px, 0.9fr));
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
     gap: 0.2em; 
 }
 
@@ -29,7 +29,8 @@
 }
 
 .card:hover {
-    transform: translateY(-4px); border-color: rgba(167,139,250,0.5);
+    transform: translateY(-4px);
+    border-color: rgba(167,139,250,0.5);
     box-shadow: 0 16px 40px rgba(0,0,0,0.4);
 }
 
@@ -81,13 +82,14 @@
 }
 
 .card-link {
-    color: var(--neon); text-decoration: none;
+    text-decoration: none;
     font-size: 0.85rem;
     font-weight: 600;
     display: flex;
     align-items: center;
     gap: 4px;
     transition: gap .2s;
+    color:  rgb(0, 0, 0);
 }
 
 .card-link:hover {
@@ -96,6 +98,7 @@
 
 body{
     background-color: rgb(96, 139, 80);
+    margin: 0;
 }
 
 .sticky-header {

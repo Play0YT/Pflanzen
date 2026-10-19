@@ -17,6 +17,8 @@ async function loadJsonVariables() {
             }
         }
 
+
+
 async function tagcalc() {
     let runs = 0
     const response = await fetch('data.json', { cache: 'no-store' });
@@ -91,3 +93,33 @@ document.querySelectorAll('.water-btn').forEach(button => {
 });
 
 tagcalc();
+
+
+/* fetch('data.json')
+  .then(response => response.json())
+  .then(data => {
+    const numberOfCopies = data.plantsamount;
+    const container = document.getElementById('cards-grid');
+    let finalHTML = '';
+
+    for (let i = 1; i <= numberOfCopies; i++) {
+      
+      finalHTML += `
+        <div class="card">
+              <img src="images-webp/${i}.webp" width="150">
+            <div class="card-text">
+              <h3 class="card-title">Kleternder Philodendron hederaceum</h3>
+                <p class="card-desc">Muss alle 7 Tage mal gegossen werden</p>
+              <div class="card-footer">
+                <span class="tag" id="${i}">No Data</span>
+                <a class="card-link" href="pflanze.html?id=${i}">Anzeigen</a>
+              </div>
+            </div>
+          </div>
+      `;
+    }
+
+    container.innerHTML = finalHTML;
+  })
+  .catch(error => console.error('Error loading JSON:', error));
+ */
