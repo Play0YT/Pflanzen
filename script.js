@@ -94,6 +94,18 @@ document.querySelectorAll('.water-btn').forEach(button => {
 
 tagcalc();
 
+const urlParams = new URLSearchParams(window.location.search);
+const newId = urlParams.get('id');
+
+if (newId) {
+const element = document.querySelector('.tag');
+const element_2 = document.querySelector('.water-btn');
+const element_3 = document.querySelector('.plimg');
+    element.id = newId;
+    element_2.dataset.plant = newId;
+    element_3.src = "images-webp/" + newId + ".webp";
+}
+
 
 /* fetch('data.json')
   .then(response => response.json())
