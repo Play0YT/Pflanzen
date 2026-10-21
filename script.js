@@ -35,31 +35,23 @@ async function tagcalc() {
         while(plantsamount > runs) {
             runs = runs += 1;
             if (!document.getElementById(runs)) continue;
-
             const lastwatered = Number(data["lastwatered_"+runs]);
             const maxtimeunwatered = Number(data["maxtimeunwatered_"+runs]);
 
             if (lastwatered + maxtimeunwatered < msSinceEpoch) {
-
                 document.getElementById(runs).textContent = data.dry;
                 document.getElementById(runs).className = data.dryt;
-
             } else {
 
                 if (lastwatered + fixedtime > msSinceEpoch) {
-
                     document.getElementById(runs).textContent = data.wet;
                     document.getElementById(runs).className = data.wett;
-
                 } else {
 
                     if (isNaN(lastwatered)) {
-
                         console.log("No data or NaN")
                         continue
-
                     } else {
-                        
                         document.getElementById(runs).textContent = data.fine;
                         document.getElementById(runs).className = data.finet;
                     }
@@ -92,19 +84,44 @@ document.querySelectorAll('.water-btn').forEach(button => {
     button.addEventListener('click', () => water(button));
 });
 
-tagcalc();
 
-const urlParams = new URLSearchParams(window.location.search);
-const newId = urlParams.get('id');
+async function subsite() {
+const response = await fetch('data.json', { cache: 'no-store' });
 
-if (newId) {
-const element = document.querySelector('.tag');
-const element_2 = document.querySelector('.water-btn');
-const element_3 = document.querySelector('.plimg');
-    element.id = newId;
-    element_2.dataset.plant = newId;
-    element_3.src = "images-webp/" + newId + ".webp";
+    if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+    const data = await response.json();
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const newId = urlParams.get('id');
+    const title = (data["name_" + newId]);
+    const desc = (data["desc_" + newId]);
+
+    if (newId) {
+    const element_1 = document.querySelector('.tag');
+    const element_2 = document.querySelector('.water-btn');
+    const element_3 = document.querySelector('.plimg');
+    const element_4 = document.querySelector(".card-title");
+    const element_5 = document.querySelector(".card-desc");
+
+        element_2.dataset.plant = newId;
+        element_3.src = "images-webp/" + newId + ".webp";
+        element_4.textContent = title;
+        element_5.textContent = desc;
+        element_1.id = newId;
+console.log("%c --- EMERGENCY DEBUG --- ", "background: red; color: white;");
+console.log("1. URL in address bar:", window.location.href);
+console.log("2. ID extracted from URL:", new URLSearchParams(window.location.search).get('id'));
+console.log("3. Calculated key looking for:", "name_" + new URLSearchParams(window.location.search).get('id'));
+console.log("4. What does the data object have for that key?:", data["name_" + new URLSearchParams(window.location.search).get('id')]);
+
+    }
 }
+
+subsite();
+tagcalc();
 
 
 /* fetch('data.json')
