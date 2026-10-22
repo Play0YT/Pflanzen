@@ -81,6 +81,7 @@ const response = await fetch('data.json', { cache: 'no-store' });
 }
 
 async function tagcalc() {
+    await cardtxt();
     let runs = 0
     const response = await fetch('data.json', { cache: 'no-store' });
     const msSinceEpoch = Date.now();
