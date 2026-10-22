@@ -1,23 +1,55 @@
-async function loadJsonVariables() {
-    try {
-        const response = await fetch('data.json');
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-                }
+async function cardtxt() {
+    let runs = 0
+    const response = await fetch('data.json', { cache: 'no-store' });
 
-                const data = await response.json();
-                return { 
-                maxtimeunwatered: Number(data.maxtimeunwatered), 
-                lastwatered: Number(data.lastwatered) 
-                };
-
-            } catch (error) {
-                console.error("Could not fetch the JSON variables:", error);
-                document.getElementById('title').textContent = "Failed to load data.";
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
             }
+
+        const data = await response.json();
+        const title = (data["name_"+runs]);
+        const desc = (data["desc_"+runs]);
+
+        const plimg = document.getElementById("7" + runs);
+        const titleel = document.getElementById("8" + runs);
+        const descel = document.getElementById("9" + runs);
+            try {
+                plimg.src = "images-webp/" + runs + ".webp";
+                titleel.textContent = title;
+                descel.textContent = desc;
+            } catch {
+                console.log("error or skipped")
+            }
+}
+
+async function subsite() {
+const response = await fetch('data.json', { cache: 'no-store' });
+
+    if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
         }
 
+    const data = await response.json();
 
+    const urlParams = new URLSearchParams(window.location.search);
+    const newId = urlParams.get('id');
+    const title = (data["name_" + newId]);
+    const desc = (data["desc_" + newId]);
+
+    if (newId) {
+    const element_1 = document.querySelector('.tag');
+    const element_2 = document.querySelector('.water-btn');
+    const element_3 = document.querySelector('.plimg');
+    const element_4 = document.querySelector(".card-title");
+    const element_5 = document.querySelector(".card-desc");
+
+        element_2.dataset.plant = newId;
+        element_3.src = "images-webp/" + newId + ".webp";
+        element_4.textContent = title;
+        element_5.textContent = desc;
+        element_1.id = newId;
+    }
+}
 
 async function tagcalc() {
     let runs = 0
@@ -85,43 +117,9 @@ document.querySelectorAll('.water-btn').forEach(button => {
 });
 
 
-async function subsite() {
-const response = await fetch('data.json', { cache: 'no-store' });
-
-    if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-
-    const data = await response.json();
-
-    const urlParams = new URLSearchParams(window.location.search);
-    const newId = urlParams.get('id');
-    const title = (data["name_" + newId]);
-    const desc = (data["desc_" + newId]);
-
-    if (newId) {
-    const element_1 = document.querySelector('.tag');
-    const element_2 = document.querySelector('.water-btn');
-    const element_3 = document.querySelector('.plimg');
-    const element_4 = document.querySelector(".card-title");
-    const element_5 = document.querySelector(".card-desc");
-
-        element_2.dataset.plant = newId;
-        element_3.src = "images-webp/" + newId + ".webp";
-        element_4.textContent = title;
-        element_5.textContent = desc;
-        element_1.id = newId;
-console.log("%c --- EMERGENCY DEBUG --- ", "background: red; color: white;");
-console.log("1. URL in address bar:", window.location.href);
-console.log("2. ID extracted from URL:", new URLSearchParams(window.location.search).get('id'));
-console.log("3. Calculated key looking for:", "name_" + new URLSearchParams(window.location.search).get('id'));
-console.log("4. What does the data object have for that key?:", data["name_" + new URLSearchParams(window.location.search).get('id')]);
-
-    }
-}
-
 subsite();
 tagcalc();
+cardtxt();
 
 
 /* fetch('data.json')
