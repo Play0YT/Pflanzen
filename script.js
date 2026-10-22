@@ -1,25 +1,54 @@
+async function htmlload() {
+return fetch('data.json')
+  .then(response => response.json())
+  .then(data => {
+    const numberOfCopies = data.plantsamount;
+    const container = document.getElementById('cards-grid');
+    let finalHTML = '';
+
+    for (let i = 1; i <= numberOfCopies; i++) {
+      
+      finalHTML += `
+        <div class="card">
+              <img id="730" src="images-webp/${i}.webp" width="150">
+            <div class="card-text">
+              <h3 id="8${i}" class="card-title">Fehler beim laden</h3>
+                <p id="9${i}" class="card-desc">Fehler beim laden</p>
+              <div class="card-footer">
+                <span class="tag" id="${i}">No Data</span>
+                <a class="card-link" href="pflanze.html?id=${i}">Anzeigen</a>
+              </div>
+            </div>
+          </div>
+      `;
+    }
+
+    container.innerHTML = finalHTML;
+    return;
+})
+.catch(error => console.error('Error loading JSON:', error));
+}
+
+
 async function cardtxt() {
-    let runs = 0
+    await htmlload();
+    let runs = 1
     const response = await fetch('data.json', { cache: 'no-store' });
 
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
             }
-
         const data = await response.json();
-        const title = (data["name_"+runs]);
-        const desc = (data["desc_"+runs]);
-
-        const plimg = document.getElementById("7" + runs);
-        const titleel = document.getElementById("8" + runs);
-        const descel = document.getElementById("9" + runs);
-            try {
-                plimg.src = "images-webp/" + runs + ".webp";
-                titleel.textContent = title;
-                descel.textContent = desc;
-            } catch {
-                console.log("error or skipped")
+        while (runs < Number(data["plantsamount"]) + 1) {
+            if (runs < Number(data["plantsamount"]) + 1) {
+                console.log(runs)
+                console.log((data["name_" + runs]));
+                console.log((data["desc_" + runs]));
+                document.getElementById("8" + runs).textContent = (data["name_" + runs]);
+                document.getElementById("9" + runs).textContent = (data["desc_" + runs]);
             }
+        runs = runs += 1;
+        }
 }
 
 async function subsite() {
@@ -116,37 +145,7 @@ document.querySelectorAll('.water-btn').forEach(button => {
     button.addEventListener('click', () => water(button));
 });
 
-
+htmlload();
+cardtxt();
 subsite();
 tagcalc();
-cardtxt();
-
-
-/* fetch('data.json')
-  .then(response => response.json())
-  .then(data => {
-    const numberOfCopies = data.plantsamount;
-    const container = document.getElementById('cards-grid');
-    let finalHTML = '';
-
-    for (let i = 1; i <= numberOfCopies; i++) {
-      
-      finalHTML += `
-        <div class="card">
-              <img src="images-webp/${i}.webp" width="150">
-            <div class="card-text">
-              <h3 class="card-title">Kleternder Philodendron hederaceum</h3>
-                <p class="card-desc">Muss alle 7 Tage mal gegossen werden</p>
-              <div class="card-footer">
-                <span class="tag" id="${i}">No Data</span>
-                <a class="card-link" href="pflanze.html?id=${i}">Anzeigen</a>
-              </div>
-            </div>
-          </div>
-      `;
-    }
-
-    container.innerHTML = finalHTML;
-  })
-  .catch(error => console.error('Error loading JSON:', error));
- */
