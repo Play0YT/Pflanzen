@@ -5,7 +5,7 @@ return fetch('data.json')
     const numberOfCopies = data.plantsamount;
     const container = document.getElementById('cards-grid');
     let finalHTML = '';
-
+    try {
     for (let i = 1; i <= numberOfCopies; i++) {
       
       finalHTML += `
@@ -24,7 +24,9 @@ return fetch('data.json')
     }
 
     container.innerHTML = finalHTML;
-    return;
+    }
+    finally{return};
+
 })
 .catch(error => console.error('Error loading JSON:', error));
 }
@@ -39,16 +41,16 @@ async function cardtxt() {
             throw new Error(`HTTP error! Status: ${response.status}`);
             }
         const data = await response.json();
+    try {
         while (runs < Number(data["plantsamount"]) + 1) {
             if (runs < Number(data["plantsamount"]) + 1) {
-                console.log(runs)
-                console.log((data["name_" + runs]));
-                console.log((data["desc_" + runs]));
                 document.getElementById("8" + runs).textContent = (data["name_" + runs]);
                 document.getElementById("9" + runs).textContent = (data["desc_" + runs]);
             }
         runs = runs += 1;
         }
+    }
+    finally{return};
 }
 
 async function subsite() {
