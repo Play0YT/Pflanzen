@@ -12,8 +12,8 @@ return fetch('data.json')
         <div class="card">
               <img id="730" src="images-webp/${i}.webp" width="150">
             <div class="card-text">
-              <h3 id="8${i}" class="card-title">Fehler beim laden</h3>
-                <p id="9${i}" class="card-desc">Fehler beim laden</p>
+              <h3 id="8${i}" class="card-title">Lädt</h3>
+                <p id="9${i}" class="card-desc">Lädt</p>
               <div class="card-footer">
                 <span class="tag" id="${i}">No Data</span>
                 <a class="card-link" href="pflanze.html?id=${i}">Anzeigen</a>
@@ -66,19 +66,36 @@ const response = await fetch('data.json', { cache: 'no-store' });
     const newId = urlParams.get('id');
     const title = (data["name_" + newId]);
     const desc = (data["desc_" + newId]);
+    const location = (data["location_" + newId]);
 
     if (newId) {
+        if (newId == 404) {
+            document.querySelector(".tag").textContent = "nyanized";
+            document.querySelector(".plimg").src = "images-webp/nyan.gif"
+            document.querySelector(".location").textContent = "Somwhere in this universe :3";
+            document.querySelector(".card-title").textContent = "Nyancat";
+            document.querySelector(".card-desc").textContent = "Nyan-Nyan";
+            return;
+        }
     const element_1 = document.querySelector('.tag');
     const element_2 = document.querySelector('.water-btn');
     const element_3 = document.querySelector('.plimg');
     const element_4 = document.querySelector(".card-title");
     const element_5 = document.querySelector(".card-desc");
+    const element_6 = document.querySelector(".time-watered");
+    const time = Number(data["lastwatered_" + newId]);
+    const element_7 = document.querySelector(".water-needed-at");
+    const time1 = Number(data["lastwatered_" + newId]) + Number(data["maxtimeunwatered_" + newId]);
+    const element_8 = document.querySelector(".location");
 
         element_2.dataset.plant = newId;
         element_3.src = "images-webp/" + newId + ".webp";
         element_4.textContent = title;
         element_5.textContent = desc;
         element_1.id = newId;
+        element_6.textContent = new Date(time).toLocaleDateString(time);
+        element_7.textContent = new Date(time1).toLocaleDateString(time1);
+        element_8.textContent = location;
     }
 }
 

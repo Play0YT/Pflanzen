@@ -125,6 +125,7 @@ body{
   color: rgb(44, 63, 45);
   padding: 15px;
   z-index: 1000;
+  margin-top: 100;
   margin-bottom: 2em;
 }
 
@@ -149,8 +150,9 @@ body{
 }
 
 .water-btn {
-    border: rgba(0, 102, 255, 0.849);
-    background-color: rgba(60, 140, 220, 0.63);
+    color: black;
+    border-color: rgba(0, 102, 255, 0.849);
+    background-color: rgba(87, 194, 255, 0.63);
 }
 
 .water-btn:disabled {
