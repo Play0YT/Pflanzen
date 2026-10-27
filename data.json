@@ -6,6 +6,7 @@
     "finet": "tag fine",
     "wett": "tag wet",
     "fixedtime": 14400000,
+
     "lastwatered_1": 1793087139150,
     "maxtimeunwatered_1": 604800000,
     "lastwatered_2": 1793087144657,
@@ -24,7 +25,7 @@
     "maxtimeunwatered_8": 1209600000,
     "lastwatered_9": 1793087187110,
     "maxtimeunwatered_9": 1209600000,
-    "lastwatered_10": 1792494103660,
+    "lastwatered_10": 1793102604859,
     "maxtimeunwatered_10": 604800000,
     "lastwatered_11": 1793087196687,
     "maxtimeunwatered_11": 604800000,
@@ -54,7 +55,7 @@
     "maxtimeunwatered_23": 1209600000,
     "lastwatered_24": 1793087390540,
     "maxtimeunwatered_24": 604800000,
-    "lastwatered_25": 0,
+    "lastwatered_25": 1793102741859,
     "maxtimeunwatered_25": 604800000,
     "lastwatered_26": 1793087401643,
     "maxtimeunwatered_26": 604800000,
@@ -67,7 +68,7 @@
     "lastwatered_30": 1793087422749,
     "maxtimeunwatered_30": 604800000,
     "plantsamount": 30,
-    "plh": "Placeholder",
+    
     "name_1": "Baumfreund / Philodendron hederaceum (an Moosstab, grosser Kübel)",
     "desc_1": "Muss alle 7 Tage gegossen werden",
     "name_2": "Baumfreund / Philodendron hederaceum (grosser Kübel)",
@@ -128,6 +129,7 @@
     "desc_29": "Muss alle 7 Tage gegossen werden",
     "name_30": "Schmalblättrige Feige / Ficus binnendijkii ‘Alii’",
     "desc_30": "Muss alle 7 Tage gegossen werden",
+
     "location_1": "Vor der Tür zum Puasenraum",
     "location_2": "Neben der Tür im Aufenthaltsraum",
     "location_3": "Im Aufenthaltsraum vom Eingang links hinten an der wand",

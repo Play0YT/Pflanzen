@@ -139,6 +139,17 @@ const response = await fetch('data.json', { cache: 'no-store' });
             window.location.href = _0x4f12[11];
         }
     }
+    
+    /* wenn in der url active=true ist dann sendet die seite sofort beim öffnen eine POST request
+    und sagt damit der seite das diese pflanze direkt auf gegossen umgestellt werden kann  nicht empfohlen zu verwenden*/
+    try {
+        const active = new URLSearchParams(window.location.search).get('active');
+        if (active) {
+            fetch('api/water/' + newId, { method: 'POST' });
+        } 
+    } catch (error) {
+        return;
+    }
     }
 }
 

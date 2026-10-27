@@ -1,8 +1,6 @@
 
 # Webseite zur vereinfachung des pflanzengiessämtlis
 
-## Von levi
-
 diese app soll das Pflanzengiessämtli vereinfachen indem es eine übersicht aller pflanzen im büro bietet und auf einen blick einsehbar ist ob diese pflanze gegossen werden muss
 
 in dem javascript habe ich kommentare für besseres verständniss hinzugefügt alle anderen dateien ausser des server.py sind so kurz das man diese nicht wirklich kommentieren muss
