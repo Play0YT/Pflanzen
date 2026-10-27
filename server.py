@@ -1,4 +1,5 @@
-"diese datei wurde spezifisch von claude generiert bei bedarf / möglichkeit werde ich diese selber schreiben mein verständniss von datenbanken usw ist momentan nicht tief genug um ein solches script selber zu schreiben"
+# diese datei wurde spezifisch von claude generiert bei bedarf / möglichkeit werde ich diese selber schreiben
+# mein verständniss von datenbanken usw ist momentan nicht tief genug um ein solches script selber zu schreiben
 
 
 """Kleiner Webserver für das Pflanzengiessämtli.
