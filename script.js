@@ -2,6 +2,7 @@
  diese komplette datei wird wie man so schön sagt "held together by hopes dreams and ducttape" 
  ich bin nicht gut genug im js um das schön aussehen zu lassen aber ich kommentirer jetzt alles das amn es wenigstens ein wenig versteht
 */
+
 /* Diese funktion sorgt dafür das in der datei index.html alle karten geladen werden und die richtigen indentifikationen haben */
 async function htmlload() {
 return fetch('data.json')
@@ -241,7 +242,7 @@ document.querySelectorAll('.water-btn').forEach(button => {
     button.addEventListener('click', () => water(button));
 });
 
-/* hier werden die funktioonen nacheinander aufgerufen trotzdem muss ich diese aufeinander warten lassen weil code so schnell läuft */
+/* hier werden die funktionen nacheinander aufgerufen trotzdem muss ich diese aufeinander warten lassen weil code so schnell läuft */
 htmlload();
 cardtxt();
 subsite();
